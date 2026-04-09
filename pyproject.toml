@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycalculator"
+version = "0.1.0"
+description = "FastAPI calculator app"
+requires-python = ">=3.10"
+dependencies = [
+"fastapi==0.135.3",
+"pydantic==2.12.5"
+]
+
+[project.optional-dependencies]
+server = [
+"uvicorn==0.44.0"
+]
+test = [
+"httpx==0.28.1"
+]
+
+[tool.uv]
+exclude-newer = "3 days"
