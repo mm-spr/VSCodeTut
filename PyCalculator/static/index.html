@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PyCalculator</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="calculator-window" aria-label="Calculator">
+        <header class="title-bar">
+          <div class="title-meta">
+            <span class="app-icon" aria-hidden="true">
+              <span class="app-icon-grid"></span>
+            </span>
+            <div>
+              <p class="app-label">Calculator</p>
+              <h1>Standard</h1>
+            </div>
+          </div>
+
+          <div class="window-controls" aria-hidden="true">
+            <button type="button" class="window-control" tabindex="-1">&#8211;</button>
+            <button type="button" class="window-control" tabindex="-1">&#9633;</button>
+            <button type="button" class="window-control close" tabindex="-1">&#10005;</button>
+          </div>
+        </header>
+
+        <section class="display-panel" aria-live="polite">
+          <div class="memory-strip">
+            <span id="memory-indicator" class="memory-indicator">M</span>
+          </div>
+          <p id="expression" class="expression">0</p>
+          <output id="result" class="result">0</output>
+          <p id="status" class="status">Ready</p>
+        </section>
+
+        <section class="memory-keys" aria-label="Memory keys">
+          <button type="button" class="memory-key" data-action="memory-clear">MC</button>
+          <button type="button" class="memory-key" data-action="memory-recall">MR</button>
+          <button type="button" class="memory-key" data-action="memory-add">M+</button>
+          <button type="button" class="memory-key" data-action="memory-subtract">M-</button>
+          <button type="button" class="memory-key" data-action="memory-store">MS</button>
+        </section>
+
+        <section class="keypad" aria-label="Calculator keys">
+          <button type="button" class="key utility" data-action="percent">%</button>
+          <button type="button" class="key utility" data-value="(">(</button>
+          <button type="button" class="key utility" data-value=")">)</button>
+          <button type="button" class="key utility" data-action="clear-all">C</button>
+          <button type="button" class="key utility" data-action="clear-entry">CE</button>
+
+          <button type="button" class="key number" data-value="7">7</button>
+          <button type="button" class="key number" data-value="8">8</button>
+          <button type="button" class="key number" data-value="9">9</button>
+          <button type="button" class="key utility" data-action="backspace">⌫</button>
+          <button type="button" class="key operator" data-value="/">÷</button>
+
+          <button type="button" class="key number" data-value="4">4</button>
+          <button type="button" class="key number" data-value="5">5</button>
+          <button type="button" class="key number" data-value="6">6</button>
+          <button type="button" class="key operator" data-value="*">×</button>
+          <button type="button" class="key operator" data-value="-">−</button>
+
+          <button type="button" class="key number" data-value="1">1</button>
+          <button type="button" class="key number" data-value="2">2</button>
+          <button type="button" class="key number" data-value="3">3</button>
+          <button type="button" class="key operator" data-value="+">+</button>
+          <button type="button" class="key equals span-rows" data-action="equals">=</button>
+
+          <button type="button" class="key number" data-action="toggle-sign">±</button>
+          <button type="button" class="key number span-2" data-value="0">0</button>
+          <button type="button" class="key number" data-value=".">.</button>
+        </section>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

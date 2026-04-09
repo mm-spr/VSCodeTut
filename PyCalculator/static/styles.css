@@ -1,0 +1,275 @@
+:root {
+  --app-bg: #0f1013;
+  --window-bg: #1a1c21;
+  --window-edge: #2b2f36;
+  --panel-bg: #17191d;
+  --display-text: #f5f7fb;
+  --muted-text: #8b93a1;
+  --key-bg: #24272e;
+  --key-border: #343943;
+  --key-hover: #2d3139;
+  --key-utility: #1f2228;
+  --operator-bg: #2d3138;
+  --equals-bg: #4c7cf0;
+  --equals-hover: #5c8cff;
+  --danger: #ff7a7a;
+  --chrome-hover: #2f333b;
+  --chrome-close: #d9534f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(76, 124, 240, 0.18), transparent 32%),
+    linear-gradient(180deg, #101114, var(--app-bg));
+  color: var(--display-text);
+}
+
+.app-shell {
+  width: min(100%, 390px);
+}
+
+.calculator-window {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 12%), var(--window-bg);
+  border: 1px solid var(--window-edge);
+  border-radius: 18px;
+  padding: 0.75rem 0.85rem 0.95rem;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+}
+
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 3.1rem;
+  margin-bottom: 0.65rem;
+}
+
+.title-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 7px;
+  border: 1px solid #3a4251;
+  background: linear-gradient(180deg, #2d3642, #1b232d);
+  display: inline-grid;
+  place-items: center;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.app-icon-grid {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 4px;
+  background:
+    linear-gradient(90deg, transparent 32%, rgba(245, 247, 251, 0.9) 32%, rgba(245, 247, 251, 0.9) 38%, transparent 38%, transparent 62%, rgba(245, 247, 251, 0.9) 62%, rgba(245, 247, 251, 0.9) 68%, transparent 68%),
+    linear-gradient(transparent 32%, rgba(245, 247, 251, 0.9) 32%, rgba(245, 247, 251, 0.9) 38%, transparent 38%, transparent 62%, rgba(245, 247, 251, 0.9) 62%, rgba(245, 247, 251, 0.9) 68%, transparent 68%);
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+}
+
+.window-control {
+  width: 2.2rem;
+  height: 2rem;
+  border: 0;
+  background: transparent;
+  color: var(--display-text);
+  font: inherit;
+  cursor: default;
+  border-radius: 10px;
+}
+
+.window-control:hover {
+  background: var(--chrome-hover);
+}
+
+.window-control.close:hover {
+  background: var(--chrome-close);
+}
+
+.app-label {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 0.82rem;
+}
+
+.title-bar h1 {
+  margin: 0.15rem 0 0;
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+
+.display-panel {
+  background: var(--panel-bg);
+  border: 1px solid #232730;
+  border-radius: 14px;
+  padding: 0.95rem 1rem 0.9rem;
+  min-height: 8.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.memory-strip {
+  min-height: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.memory-indicator {
+  opacity: 0;
+  color: var(--muted-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: opacity 120ms ease;
+}
+
+.memory-indicator.active {
+  opacity: 1;
+}
+
+.expression {
+  margin: 0;
+  min-height: 1.5rem;
+  text-align: right;
+  color: var(--muted-text);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+
+.result {
+  display: block;
+  margin-top: 0.3rem;
+  text-align: right;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+  word-break: break-all;
+}
+
+.status {
+  margin: 0.45rem 0 0;
+  min-height: 1.2rem;
+  text-align: right;
+  color: var(--muted-text);
+  font-size: 0.84rem;
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.memory-keys {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.memory-key {
+  min-height: 2rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted-text);
+  font: inherit;
+  font-size: 0.83rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.memory-key:hover {
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--display-text);
+}
+
+.keypad {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.key {
+  border: 1px solid var(--key-border);
+  border-radius: 12px;
+  min-height: 3.7rem;
+  background: var(--key-bg);
+  color: var(--display-text);
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 140ms ease, transform 120ms ease, border-color 140ms ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.98);
+}
+
+.key.utility {
+  background: var(--key-utility);
+}
+
+.key.operator {
+  background: var(--operator-bg);
+}
+
+.key.equals {
+  background: var(--equals-bg);
+  border-color: #6a93ff;
+}
+
+.key.equals:hover {
+  background: var(--equals-hover);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.span-rows {
+  grid-row: span 2;
+}
+
+.key:focus-visible,
+.memory-key:focus-visible {
+  outline: 2px solid rgba(106, 147, 255, 0.95);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+  .calculator-window {
+    padding: 0.85rem;
+    border-radius: 16px;
+  }
+
+  .window-control {
+    width: 1.8rem;
+  }
+
+  .key {
+    min-height: 3.35rem;
+  }
+}
